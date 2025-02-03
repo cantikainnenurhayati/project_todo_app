@@ -10,6 +10,7 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
+    // membuat  tabel dengan//
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();

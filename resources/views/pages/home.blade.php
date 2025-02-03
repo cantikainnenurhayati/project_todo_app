@@ -5,7 +5,7 @@
         @if ($lists->count() == 0)
         {{-- div digunakan untuk membungkus sesuatu isi content--}}
             <div class="d-flex flex-column align-items-center">
-                {{-- digunaka untuk membungkus sebuah paragraf --}}
+                {{-- digunakan untuk membungkus sebuah paragraf --}}
                 <p class="fw-bold text-center">Belum ada tugas yang ditambahkan</p>
                 {{-- buton adalah tombol --}}
                 <button type="button" class="btn btn-sm d-flex align-items-center gap-2 btn-outline-primary"
