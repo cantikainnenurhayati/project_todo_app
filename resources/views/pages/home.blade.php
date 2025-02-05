@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="content" class="overflow-y-hidden overflow-x-hidden">
+    <div id="content" class="overflow-y-hidden overflow-x-hidden bg-background.jpg">
         @if ($lists->count() == 0)
         {{-- div digunakan untuk membungkus sesuatu isi content--}}
             <div class="d-flex flex-column align-items-center">
                 {{-- digunakan untuk membungkus sebuah paragraf --}}
                 <p class="fw-bold text-center">Belum ada tugas yang ditambahkan</p>
                 {{-- buton adalah tombol --}}
-                <button type="button" class="btn btn-sm d-flex align-items-center gap-2 btn-outline-primary"
+                <button type="button" class="btn btn-sm d-flex align-items-center gap-2 btn-outline-secondary"
                     style="width: fit-content;">
                     <i class="bi bi-plus-square fs-3"></i> Tambah
                 </button>
@@ -63,7 +63,7 @@
                                             <form action="{{ route('tasks.complete', $task->id) }}" method="POST">
                                                 @csrf
                                                 @method('PATCH')
-                                                <button type="submit" class="btn btn-sm btn-primary w-100">
+                                                <button type="submit" class="btn btn-sm btn-secondaryw-100">
                                                     <span class="d-flex align-items-center justify-content-center">
                                                         <i class="bi bi-check fs-5"></i>
                                                         Selesai
@@ -76,7 +76,7 @@
                                 </div>
                             @endif
                         @endforeach
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal"
                             data-bs-target="#addTaskModal" data-list="{{ $list->id }}">
                             <span class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-plus fs-5"></i>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             @endforeach
-            <button type="button" class="btn btn-outline-primary flex-shrink-0" style="width: 18rem; height: fit-content;"
+            <button type="button" class="btn btn-secondary flex-shrink-0" style="width: 18rem; height: fit-content;"
                 data-bs-toggle="modal" data-bs-target="#addListModal">
                 <span class="d-flex align-items-center justify-content-center">
                     <i class="bi bi-plus fs-5"></i>
