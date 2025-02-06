@@ -4,7 +4,7 @@
     <style>
         /* Mengatur gambar latar belakang untuk elemen dengan ID 'content' */
         #content {
-            background-image: url('{{ asset('images/background.jpg') }}'); /* Menggunakan gambar dari folder public/images */
+            background-image: url('{{ asset('images/background.jpg') }}'); /* Menggunakan gambar dari folder public/images/yg bernama background image */
             background-size: cover; /* Memastikan gambar menutupi seluruh area */
             background-position: center; /* Memposisikan gambar di tengah */
             color: white; /* Mengubah warna teks menjadi putih untuk kontras yang lebih baik */
@@ -19,7 +19,7 @@
         @if ($lists->count() == 0) <!-- Memeriksa apakah tidak ada daftar tugas -->
             <div class="text-center mb-4">
                 <p class="fw-bold">Belum ada tugas yang ditambahkan</p> <!-- Pesan jika tidak ada tugas -->
-                <button type="button" class="btn btn-primary btn-lg">
+                <button type="button" class="btn btn-primary btn-sm">
                     <i class="bi bi-plus-square"></i> Tambah <!-- Tombol untuk menambah tugas -->
                 </button>
             </div>
@@ -44,6 +44,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
+                                                {{-- a href Ini adalah elemen tautan yang mengarahkan pengguna ke halaman detail tugas. --}}
                                                 <a href="{{ route('tasks.show', $task->id) }}" class="fw-bold {{ $task->is_completed ? 'text-decoration-line-through text-muted' : '' }}">
                                                     {{ $task->name }} <!-- Menampilkan nama tugas -->
                                                 </a>
