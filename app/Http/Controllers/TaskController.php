@@ -1,5 +1,7 @@
 <?php
+// task controler diguakan untuk menampilkan isi daftar tugas,menambha tugas baru,mengedit tugas  dan menandai tugas selesai dan menghapus tugas //
 
+ // mengelompokkan kelas-kelas controller yang ada di dalam folder app/Http/Controllers.//
 namespace App\Http\Controllers;
 
 use App\Models\Task;
@@ -9,42 +11,73 @@ use Illuminate\Http\Request;
 class TaskController extends Controller
 {
     public function index() {
+        // berfungsi untuk mengambil data dari databse //
         $data = [
             'title' => 'Home',
-            'lists' => TaskList::all(),
+            'lists' => TaskList::all(), 
+            // mengambil semua list yg ada di dalam database //
             'tasks' => Task::orderBy('created_at', 'desc')->get(),
+            // descending dari besar ke kecil ascending:dari kecil ke besar //
+            // get mendapatkan data task yang nantinya akan dibuat berurutan sesuai urutan descending //
             'priorities' => Task::PRIORITIES
+            // priorities digunakan untuk mengambil data priority yg ada di database //
         ];
 
         return view('pages.home', $data);
+        // setelah kita mengambil data akan diarahkan ke halaman home //
     }
 
-    public function store(Request $request) {
-        $request->validate([
+    public function store(Request $request)
+    // digunakan untuk menyimpan data baru ke dalam databases // 
+     {
+        $request->validate
+        // digunakan untuk memvalidassi yg dikirim oleh pengguna //
+        ([
             'name' => 'required|max:100',
+            // required(wajib diisi)  max:100:tidak lebih dari 100 huruf//
             'list_id' => 'required'
+            // list wajib diisi //
         ]);
 
         Task::create([
             'name' => $request->name,
             'list_id' => $request->list_id
+            // membuat tugas baru
         ]);
 
 
         return redirect()->back();
+        // setelah menambhakan data task akan diarahkan kembali ke halaman home //
     }
 
-    public function complete($id) {
-        Task::findOrFail($id)->update([
+    public function complete($id)
+    // digunakan untuk membuat status tugas selesai //
+     {
+        Task::findOrFail($id)->update
+        // digunakan untuk memastikan tugas selsai //
+        ([
             'is_completed' => true
         ]);
 
         return redirect()->back();
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    // digunakan untuk menghapus tugas berdasarkan id //
+     {
         Task::findOrFail($id)->delete();
 
         return redirect()->back();
     }
+    public function show($id) {
+        $task = Task::findOrfail($id);
+
+        $data = [
+            'title' =>'Details' ,
+            'task' => $task , 
+        ];
+
+        return view('pages.details', $data);    
+    }
+
 }
