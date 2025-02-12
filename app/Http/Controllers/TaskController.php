@@ -4,6 +4,7 @@
  // mengelompokkan kelas-kelas controller yang ada di dalam folder app/Http/Controllers.//
 namespace App\Http\Controllers;
 
+// untuk memanggil //
 use App\Models\Task;
 use App\Models\TaskList;
 use Illuminate\Http\Request;
