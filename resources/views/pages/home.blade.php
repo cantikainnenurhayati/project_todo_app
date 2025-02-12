@@ -8,10 +8,25 @@
             background-size: cover; /* Memastikan gambar menutupi seluruh area */
             background-position: center; /* Memposisikan gambar di tengah */
             color: white; /* Mengubah warna teks menjadi putih untuk kontras yang lebih baik */
+            min-height: 100vh; /* Memastikan konten memenuhi tinggi layar */
         }
         /* Mengatur gaya untuk kartu agar memiliki latar belakang transparan */
         .card {
-            background-color: rgba(255, 255, 255, 0.8); /* Memberikan latar belakang putih dengan transparansi 80% */
+            background-color: rgba(255, 255, 255, 0.9); /* Memberikan latar belakang putih dengan transparansi 90% */
+            transition: transform 0.2s; /* Menambahkan efek transisi saat hover */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan pada kartu */
+        }
+        .card:hover {
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+        .btn {
+            transition: background-color 0.3s, transform 0.2s; /* Transisi untuk tombol */
+        }
+        .btn:hover {
+            transform: scale(1.1); /* Efek zoom saat hover pada tombol */
+        }
+        .badge {
+            font-size: 0.9em; /* Ukuran font badge */
         }
     </style>
 
@@ -44,7 +59,6 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
-                                                {{-- a href Ini adalah elemen tautan yang mengarahkan pengguna ke halaman detail tugas. --}}
                                                 <a href="{{ route('tasks.show', $task->id) }}" class="fw-bold {{ $task->is_completed ? 'text-decoration-line-through text-muted' : '' }}">
                                                     {{ $task->name }} <!-- Menampilkan nama tugas -->
                                                 </a>
@@ -83,8 +97,9 @@
                     </div>
                 </div>
             @endforeach
-            <button type="button" class="btn btn-primary flex-shrink-0" style="width: 18rem;" data-bs-toggle="modal" data-bs-target="#addListModal">
-                <i class="bi bi-plus"></i> Tambah Daftar <!-- Tombol untuk menambah daftar baru -->
+            <button type="button" class="btn btn-outline-primary p-3 rounded-circle shadow-lg d-flex align-items-center justify-content-center" 
+            data-bs-toggle="modal" data-bs-target="#addListModal" style="width: 60px; height: 60px;">
+                <i class="bi bi-plus-lg fs-3"></i>
             </button>
         </div>
     </div>

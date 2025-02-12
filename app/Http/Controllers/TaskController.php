@@ -1,5 +1,5 @@
 <?php
-// task controler diguakan untuk menampilkan isi daftar tugas,menambha tugas baru,mengedit tugas  dan menandai tugas selesai dan menghapus tugas //
+// task controler digunakan untuk menampilkan isi daftar tugas,menambahkan tugas baru,mengedit tugas  dan menandai tugas selesai dan menghapus tugas //
 
  // mengelompokkan kelas-kelas controller yang ada di dalam folder app/Http/Controllers.//
 namespace App\Http\Controllers;
@@ -35,12 +35,16 @@ class TaskController extends Controller
         ([
             'name' => 'required|max:100',
             // required(wajib diisi)  max:100:tidak lebih dari 100 huruf//
+            'deskripsi' => 'max:255' ,
+            'priority' =>  'required | in:low,medium,high'  ,
             'list_id' => 'required'
             // list wajib diisi //
         ]);
 
         Task::create([
             'name' => $request->name,
+            'decription' => $request->deskripsi, 
+            'priority' => $request->priority,
             'list_id' => $request->list_id
             // membuat tugas baru
         ]);
