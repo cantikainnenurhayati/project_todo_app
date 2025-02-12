@@ -35,7 +35,8 @@ class TaskController extends Controller
         ([
             'name' => 'required|max:100',
             // required(wajib diisi)  max:100:tidak lebih dari 100 huruf//
-            'deskripsi' => 'max:255' ,
+            
+            'description' => 'max:255' ,
             'priority' =>  'required | in:low,medium,high'  ,
             'list_id' => 'required'
             // list wajib diisi //
@@ -43,7 +44,7 @@ class TaskController extends Controller
 
         Task::create([
             'name' => $request->name,
-            'decription' => $request->deskripsi, 
+            'description' => $request->description, 
             'priority' => $request->priority,
             'list_id' => $request->list_id
             // membuat tugas baru
