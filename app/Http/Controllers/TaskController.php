@@ -7,7 +7,8 @@ namespace App\Http\Controllers;
 // untuk memanggil //
 use App\Models\Task;
 use App\Models\TaskList;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+// untuk menangani permintaan data akses yg dikirim oleh penguna //
 
 class TaskController extends Controller
 {
@@ -73,17 +74,49 @@ class TaskController extends Controller
      {
         Task::findOrFail($id)->delete();
 
-        return redirect()->back();
+        return redirect()->route('home');
     }
     public function show($id) {
         $task = Task::findOrfail($id);
 
         $data = [
-            'title' =>'Details' ,
-            'task' => $task , 
+            'title' => 'Task',
+            'lists' => TaskList::all(),
+            'task' => Task::findOrFail($id),
         ];
 
         return view('pages.details', $data);    
+    }
+
+    public function changeList(Request $request, Task $task)
+    {
+        $request->validate([
+            'list_id' => 'required|exists:task_lists,id',
+        ]);
+
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id
+        ]);
+
+        return redirect()->back()->with('success', 'List berhasil diperbarui!');
+    }
+    public function update(Request $request, Task $task)
+    {
+        $request->validate([
+            'list_id' => 'required',
+            'name' => 'required|max:100',
+            'description' => 'max:255',
+            'priority' => 'required|in:low,medium,high'
+        ]);
+
+        Task::findOrFail($task->id)->update([
+            'list_id' => $request->list_id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'priority' => $request->priority
+        ]);
+
+        return redirect()->back()->with('success', 'Task berhasil diperbarui!');
     }
 
 }
