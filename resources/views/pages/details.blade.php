@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="content" class="container pb-3">
+    <div id="content" class="container pb-3  ">
         <!-- Container utama dengan padding bawah -->
 
         <div class="d-flex align-items-center-justify-content center">
             <!-- Tombol kembali ke halaman utama -->
             <a href="{{ route('home') }}" class="btn btn-sm fw-bold fs-4 btn-dark">
-                {{-- Tombol kembali dengan warna biru (btn-primary) --}}
+                {{-- Tombol kembali dengan warna hitam (btn-hitam) --}}
                 <i class="bi bi-arrow-left-short fs-4"></i>
                 Kembali
             </a>
@@ -35,7 +35,7 @@
                         </h3>
 
                         <!-- Tombol edit tugas -->
-                        <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+                        <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal"
                             data-bs-target="#editTaskModal">
                             <i class="bi bi-pencil-square"></i>
                         </button>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-dark">Edit</button>
                     </div>
                 </form>
             </div>
