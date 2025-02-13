@@ -1,6 +1,6 @@
 <div class="modal fade" id="addListModal" tabindex="-1" aria-labelledby="addListModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        {{--from action di gunakan untuk mengarahkan data ke palidasi store --}}
+        {{--from action di gunakan untuk mengarahkan data ke validasi store --}}
         <form action="{{ route('lists.store') }}" method="POST" class="modal-content">
             @method('POST')
             @csrf
