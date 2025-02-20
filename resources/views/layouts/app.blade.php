@@ -9,20 +9,26 @@
     <title>{{ $title }} - {{ config('app.name') }}</title>
 
     <!-- Import bootstrap CSS -->
+    {{-- link rel untuk memanggil css --}}
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-icons/font/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-icons/font/bootstrap-icons.min.css') }}">
 </head>
+{{-- body adalah wadah untuk menampilkan conten --}}
 
 <body>
-    {{-- jadi include digunakan untuk mengambil fungsi fungsi component yg ada di dlam folder partials/navbar --}}
-    @include('partials.navbar') <!-- Mengambil component navbar --> 
-{{-- yield digunakan untuk mendifinisikan tempat(section) di dalam sebuah layouts --}}
-    @yield('content') <!-- Render content -->
-{{-- jadi include digunakan untuk mengambil fungsi fungsi component yg ada di dlam folder partials/modal--}}
-    @include('partials.modal')
+    {{-- include di gunakan untuk mengambil pungsi pungsi komponen yang ada di dalam polder partial/napbar --}}
+    {{-- body adalah wadah untuk menampilkan conten --}}
+    @include('partials.navbar') <!-- Mengambil component navbar -->
 
+    @yield('content') <!-- Render content -->
+    {{-- yield di gunakan untuk mendefinisikan tempat(section)didalam sebuah layout --}}
+    @include('partials.modal')
+    {{-- ingklud di gunakan untuk mengambil pungsi pungsi komponen yang ada di dalam polder partial/napbar --}}
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script> <!-- Import bootstrap JS -->
+    {{-- scrip untuk memanggil js --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
