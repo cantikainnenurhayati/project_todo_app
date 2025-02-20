@@ -4,7 +4,7 @@
     <style>
         /* Mengatur gambar latar belakang untuk elemen dengan ID 'content' */
         #content {
-            background-image: url('{{ asset('images/background.jpg') }}');
+            background-image: url('{{ asset('/images/background.jpg') }}');
             /* Menggunakan gambar dari folder public/images/yg bernama background image */
             background-size: cover;
             /* Memastikan gambar menutupi seluruh area */
@@ -74,6 +74,7 @@
                         </form>
                     </div>
                     <div class="card-body d-flex flex-column gap-3 overflow-x-hidden">
+                        {{-- berfungsi untuk mengatur tata letak dan tampilan bagian dalam kartu (card) di Bootstrap --}}
                         @foreach ($tasks as $task)
                             <!-- Mengitegrasi setiap tugas dalam daftar -->
                             @if ($task->list_id == $list->id)
