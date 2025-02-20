@@ -49,9 +49,7 @@
 
     <div id="content" class="p-4">
         @if ($lists->count() == 0)
-            <!-- Memeriksa apakah tidak ada daftar tugas -->
             <div class="text-center mb-4">
-                <p class="fw-bold">Belum ada tugas yang ditambahkan</p> <!-- Pesan jika tidak ada tugas -->
                 <button type="button" class="btn btn-dark btn-sm">
                     <i class="bi bi-plus-square"></i> Tambah <!-- Tombol untuk menambah tugas -->
                 </button>
@@ -128,10 +126,13 @@
                     </div>
                 </div>
             @endforeach
+            {{-- Tombol dengan desain outline dark, tetapi ukurannya mungkin terlalu besar untuk responsivitas - --}}
             <button type="button" class="btn btn-outline-dark flex-shrink-0" style="width: 18rem; height: fit-content;"
                 data-bs-toggle="modal" data-bs-target="#addListModal">
                 <span class="d-flex align-items-center justify-content-center">
+                    {{-- Ikon plus sudah sesuai, tetapi sebaiknya ditambahkan aria-hidden="true" untuk aksesibilitas --> --}}
                     <i class="bi bi-plus fs-5"></i>
+                    {{-- !-- Teks "Tambah" terlihat jelas, tetapi bisa diberi jarak dengan ikon menggunakan gap-2 --> --}}
                     Tambah
                 </span>
             </button>
